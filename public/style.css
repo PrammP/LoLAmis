@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.champion-display {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.champion-display img {
+    width: 120px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+#top{
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#champion{
+    height: 100%;
+    width: 30%;
+    
+   
+}
+#bot{
+    display: flex;
+    height: 65vh;
+    border: 1px solid black;
+}
+#runes{
+    height: 100%;
+    width: 30%;
+    border-left: 1px solid black;
+}
+#build{
+    height: 100%;
+    width: 40%;
+    border-left: 1px solid black;
+}
