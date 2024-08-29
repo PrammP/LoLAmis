@@ -7,10 +7,9 @@ body {
 }
 
 .champion-display {
-    margin-top: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
+   
 }
 .champion-display img {
     width: 120px;
@@ -30,8 +29,6 @@ body {
 #champion{
     height: 100%;
     width: 30%;
-    
-   
 }
 #bot{
     display: flex;
@@ -47,4 +44,55 @@ body {
     height: 100%;
     width: 40%;
     border-left: 1px solid black;
+}
+
+#championStats{
+   
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+    flex-direction: column;
+    width: 30vw;
+    flex-wrap: wrap;
+    height: 25vh;
+    padding-left: 30px;
+}
+#championStats p {
+    width: 120px;
+}
+#champPres{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+height: 25vh;
+width: 20vw;
+padding-top:25px ;
+}
+
+#championAbilities{
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+    flex-direction: column;
+    width: 30vw;
+    flex-wrap: wrap;
+    height: 36vh;
+    padding-left: 50px;
+    
+}
+#botChamp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#championPassive{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 15vw;
+    padding-left: 10px;
 }
