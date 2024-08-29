@@ -8,34 +8,32 @@
 </head>
 <body>
     <div id="top">
-    <h1>Selectionnez un Champion</h1>
-    <select id="championSelect">
-       
-        <option value="">-- Selectionnez un Champion --</option>
-    </select>
-        </div>
-<div id="bot">
-    <div id="champion">
-        <div class="champion-display" id="championDisplay" style="display:none;">
-            <div id="champPres">
-                <img id="championImage" src="" alt="Champion Image">
-                <h2 id="championName"></h2>
+        <h1>Selectionnez un Champion</h1>
+        <select id="championSelect">
+            <option value="">-- Selectionnez un Champion --</option>
+        </select>
+    </div>
+    <div id="bot">
+        <div id="champion">
+            <div class="champion-display" id="championDisplay" style="display:none;">
+                <div id="champPres">
+                    <img id="championImage" src="" alt="Champion Image">
+                    <h2 id="championName"></h2>
+                </div>
+                <div id="championStats"></div>
             </div>
-            <div id="championStats">
+            <div id="botChamp">
+                <div id="championPassive"></div>
+                <div id="championAbilities">
+                    
+                </div>
             </div>
         </div>
-        <div id="botChamp">
-            <div id="championPassive">
-                
-            </div>
-        <div id="championAbilities">
-
-        </div>
+        <div id="runes">
         </div>
     </div>
-    <div id="runes"></div>
-    <div id="build"></div>
-</div>
-    <script src="api.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script type="module"src="js/champion.js"></script>
+    <script type="module"src="js/app.js"></script>
 </body>
 </html>

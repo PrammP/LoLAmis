@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    padding: 20px;
+   
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -9,7 +9,6 @@ body {
 .champion-display {
     display: flex;
     align-items: center;
-   
 }
 .champion-display img {
     width: 120px;
@@ -33,12 +32,12 @@ body {
 #bot{
     display: flex;
     height: 65vh;
-    border: 1px solid black;
+    
 }
 #runes{
     height: 100%;
     width: 30%;
-    border-left: 1px solid black;
+    border: 1px solid black;
 }
 #build{
     height: 100%;
@@ -69,18 +68,33 @@ height: 25vh;
 width: 20vw;
 padding-top:25px ;
 }
-
+#abilitiesDisplay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 #championAbilities{
     display: flex;
-    font-size: 12px;
     justify-content: center;
     flex-direction: column;
     width: 30vw;
     flex-wrap: wrap;
     height: 36vh;
-    padding-left: 50px;
+    padding-left: 30px;
     
 }
+#championAbilities p {
+    font-size: 12px;
+   
+}
+#capacity{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #botChamp{
     display: flex;
     flex-direction: row;
@@ -93,6 +107,23 @@ padding-top:25px ;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 15vw;
+    width: 20vw;
     padding-left: 10px;
+    font-size: 12px;
+}
+
+
+select {
+    width: 100%;
+    padding: 10px;
+    
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+
+@media (max-width: 700px) {
+#championDisplay{
+    flex-direction: column;
+}
 }
