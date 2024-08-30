@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-   
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -78,15 +77,65 @@ padding-top:25px ;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 30vw;
+    width: 50vw;
     flex-wrap: wrap;
     height: 36vh;
-    padding-left: 30px;
+    margin-right: 15px;
     
 }
 #championAbilities p {
     font-size: 12px;
    
+}
+#itemSlot{
+    width: 40vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.scroll-box::-webkit-scrollbar {
+    display: none;
+  }
+.scroll-box {
+    height: 95%; 
+    overflow-y: scroll; 
+    border: none;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    right: 1;
+    gap: 10px; 
+}
+.scroll-box img {
+    width: 50px;
+    height: 50px;
+}
+.scroll-box img:hover {
+    cursor: pointer;
+}
+.inventory {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 20px;
+}
+.slot {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+.slot img {
+    width: 100%;
+    height: 100%;
+    
+}
+.slot img:hover {
+    cursor: pointer;
 }
 #capacity{
     display: flex;
@@ -114,9 +163,8 @@ padding-top:25px ;
 
 
 select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
-    
     border-radius: 5px;
     border: 1px solid #ddd;
 }
@@ -127,3 +175,4 @@ select {
     flex-direction: column;
 }
 }
+
