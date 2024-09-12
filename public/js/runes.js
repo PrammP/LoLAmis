@@ -21,8 +21,8 @@ function fetchAndDisplayRunes(selectedType = "") {
             img.src = imgUrl;
             img.alt = rune.name;
             img.style.margin = "10px";
-            img.style.height = "64px";
-            img.style.width = "64px";
+            img.style.height = "32px";
+            img.style.width = "32px";
 
             img.onerror = () => {
               console.error(`Error loading image for rune: ${rune.name}`);
@@ -41,8 +41,12 @@ function fetchAndDisplayRunes(selectedType = "") {
 fetchAndDisplayRunes();
 
 runeTypeSelector.addEventListener("click", (event) => {
-  const selectedType = event.target.dataset.type;
-  if (selectedType) {
-    fetchAndDisplayRunes(selectedType);
+  const button = event.target.closest("button");
+
+  if (button) {
+    const selectedType = button.dataset.type;
+    if (selectedType) {
+      fetchAndDisplayRunes(selectedType);
+    }
   }
 });

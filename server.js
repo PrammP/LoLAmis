@@ -96,6 +96,27 @@ app.post("/auth/register", (req, res) => {
   });
 });
 
+app.get("/auth/profile", (req, res) => {
+  if (req.session.user) {
+    res.json({
+      username: req.session.user.username,
+      creationDate: req.session.user.creationDate,
+      sharedBuildsCount: req.session.user.sharedBuildsCount,
+      likesCount: req.session.user.likesCount,
+    });
+  } else {
+    res.status(401).send("Non autorisé");
+  }
+});
+
+app.get("/profile", (req, res) => {
+  if (req.session.user) {
+    res.sendFile(path.join(__dirname, "public", "profile.html"));
+  } else {
+    res.redirect("/auth/login");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
