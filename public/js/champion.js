@@ -46,14 +46,14 @@ function loadChampionDetails(championId) {
         document.getElementById("championName").textContent = champion.nom;
 
         document.getElementById("championStats").innerHTML = `
-          <p>Life: ${champion.vie}</p>
-          <p>Armor: ${champion.armure}</p>
-          <p>Mana: ${champion.mana}</p>
-          <p>RM: ${champion.resistanceMagique}</p>
-          <p>Attack damage: ${champion.degatsAttaque}</p>
-          <p>Range: ${champion.porteeAttaque}</p>
-          <p>Movespeed: ${champion.vitesseMouvement}</p>
-          <p>Attackspeed: ${champion.vitesseAttaque}</p>
+          <p>Life : ${champion.vie}</p>
+          <p>Armor : ${champion.armure}</p>
+          <p>Mana : ${champion.mana}</p>
+          <p>RM : ${champion.resistanceMagique}</p>
+          <p>Attack damage : ${champion.degatsAttaque}</p>
+          <p>Range : ${champion.porteeAttaque}</p>
+          <p>Movespeed : ${champion.vitesseMouvement}</p>
+          <p>Attackspeed : ${champion.vitesseAttaque}</p>
         `;
 
         const passiveData = selectedChampionData.passive;
