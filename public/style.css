@@ -1,3 +1,22 @@
+body{
+    width: 100%;
+	height: 100%;
+	background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+	background-size: 180% 180%;
+	animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -6,6 +25,7 @@ body {
 }
 
 .champion-display {
+    color: white;
     display: flex;
     align-items: center;
 }
@@ -14,9 +34,10 @@ body {
     height: auto;
     border: 2px solid #ddd;
     border-radius: 10px;
-    margin-left: 15px;
+   
 }
 #top{
+    color:white;
     height: 30vh;
     width: 100%;
     display: flex;
@@ -25,43 +46,56 @@ body {
     flex-direction: column;
 }
 #champion{
+    display: flex;
+    flex-direction: row;
     height: 100%;
-    width: 30%;
+    width: 100%;
 }
 #bot{
     display: flex;
-    height: 65vh;
-    
+    height: 70vh;
+    flex-direction: column;
 }
+
+
 #runes{
     height: 100%;
-    width: 30%;
-    
+    width: 100%;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+}
+#runeTypeSelector button {
+    background: none;
+    border-radius: 15%;
+    border: 1px solid white;
+}
+#runeTypeSelector{
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
 }
 #build{
     height: 100%;
     width: 40%;
-   
 }
 .runeContainer{
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 90%;
-    padding: 10px;
+    justify-content: space-evenly;
 }
 #runeContainer1{
-   width: 50%;
+   padding: 10px;
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
 }
 #runeContainer2{
-    width: 50%;
+
+   padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,13 +109,14 @@ body {
     font-size: 12px;
     justify-content: center;
     flex-direction: column;
-    width: 30vw;
+    width: 10vw;
     flex-wrap: wrap;
     height: 25vh;
-    padding-left: 30px;
+    color: white;
 }
 #championStats p {
     width: 120px;
+    color: white;
 }
 #champPres{
 display: flex;
@@ -89,7 +124,7 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 height: 25vh;
-width: 20vw;
+width: 15vw;
 padding-top:25px ;
 }
 #abilitiesDisplay{
@@ -105,12 +140,12 @@ padding-top:25px ;
     width: 50vw;
     flex-wrap: wrap;
     height: 36vh;
-    margin-right: 15px;
+
     
 }
 #championAbilities p {
     font-size: 12px;
-   
+   color: white;
 }
 .runes{
     background-color: white;
@@ -120,7 +155,7 @@ padding-top:25px ;
     cursor: pointer;
 }
 #itemSlot{
-    width: 40vw;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -136,12 +171,13 @@ padding-top:25px ;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    right: 1;
+    
     gap: 10px; 
 }
 .scroll-box img {
     width: 50px;
     height: 50px;
+    border-radius: 15px 15px 15px 15px;
 }
 .scroll-box img:hover {
     cursor: pointer;
@@ -154,17 +190,17 @@ padding-top:25px ;
 .slot {
     width: 50px;
     height: 50px;
-    border: 2px solid #ccc;
+    border: 2px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: #f9f9f9;
+    border-radius: 15px 15px 15px 15px;
 }
 .slot img {
     width: 100%;
     height: 100%;
-    
+    border-radius: 15px 15px 15px 15px;
 }
 .slot img:hover {
     cursor: pointer;
@@ -191,6 +227,8 @@ padding-top:25px ;
     width: 20vw;
     padding-left: 10px;
     font-size: 12px;
+    color: white;
+    margin-left: 20px;
 }
 
 
@@ -209,12 +247,16 @@ select {
 }
 
 button {
-    background-color: #007bff;
+    height: 70px;
+    width: 70px;
+   background: none;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin: 5px;
+    margin: 10px;
+    border: 1px solid white;
+    border-radius:50% ;
   }
