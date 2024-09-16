@@ -29,68 +29,11 @@ function loadChampionDetails(championId) {
       const display = document.getElementById("championDisplay");
 
       if (selectedChampionData) {
-        const champion = new Champion(
-          selectedChampionData.name,
-          selectedChampionData.stats.hp,
-          selectedChampionData.stats.armor,
-          selectedChampionData.stats.mp,
-          selectedChampionData.stats.spellblock,
-          selectedChampionData.stats.attackdamage,
-          selectedChampionData.stats.attackrange,
-          selectedChampionData.stats.movespeed,
-          selectedChampionData.stats.attackspeed
-        );
+        const champion = new Champion(selectedChampionData.name);
 
         const imageUrl = `https://ddragon.leagueoflegends.com/cdn/14.17.1/img/champion/${selectedChampionData.image.full}`;
         document.getElementById("championImage").src = imageUrl;
         document.getElementById("championName").textContent = champion.nom;
-
-        document.getElementById("championStats").innerHTML = `
-          <p>Life : ${champion.vie}</p>
-          <p>Armor : ${champion.armure}</p>
-          <p>Mana : ${champion.mana}</p>
-          <p>RM : ${champion.resistanceMagique}</p>
-          <p>Attack damage : ${champion.degatsAttaque}</p>
-          <p>Range : ${champion.porteeAttaque}</p>
-          <p>Movespeed : ${champion.vitesseMouvement}</p>
-          <p>Attackspeed : ${champion.vitesseAttaque}</p>
-        `;
-
-        const passiveData = selectedChampionData.passive;
-        const passive = new Passive(
-          passiveData.name,
-          passiveData.description,
-          `https://ddragon.leagueoflegends.com/cdn/14.17.1/img/passive/${passiveData.image.full}`
-        );
-
-        const passiveDisplay = document.getElementById("championPassive");
-        passiveDisplay.innerHTML = `
-          <h3>Passif :</h3>
-          <img src="${passive.imageUrl}" alt="${passive.nom}" title="${passive.description}" style="width: 50px; height: 50px;">
-          <p><strong>${passive.nom}</strong><p/>
-        `;
-
-        const abilitiesDisplay = document.getElementById("championAbilities");
-        abilitiesDisplay.innerHTML = "";
-
-        const abilities = selectedChampionData.spells.map((spell) => {
-          return new Ability(
-            spell.name,
-            spell.description,
-            `https://ddragon.leagueoflegends.com/cdn/14.17.1/img/spell/${spell.image.full}`
-          );
-        });
-
-        abilities.forEach((ability) => {
-          const abilityElement = document.createElement("div");
-          abilityElement.innerHTML = `
-          <div id="capacity">
-            <img src="${ability.imageUrl}" alt="${ability.nom}" title="${ability.description}" style="width: 50px; height: 50px;">
-            <p><strong>${ability.nom}</strong></p>
-            </div>
-          `;
-          abilitiesDisplay.appendChild(abilityElement);
-        });
 
         display.style.display = "flex";
       } else {

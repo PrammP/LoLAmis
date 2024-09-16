@@ -30,7 +30,24 @@
     
     
     <div id="top">
-        <h1>Selectionnez un Champion</h1>
+        <div class="p">
+            <p>Entrez le nom de votre Build</p>
+        </div>
+        <input type="text" placeholder="Entrez le nom de votre Build"/>
+        <div class="p">
+            <p>Choisissez le rôle de votre champion</p>
+            <div id="lane">
+                <img src="lane/white-top.webp">
+                <img src="lane/white-jungle.webp">
+                <img src="lane/white-middle.webp">
+                <img src="lane/white-bottom.webp">
+                <img src="lane/white-support.webp">
+
+            </div>
+        </div>
+<div class="p">
+        <p>Selectionnez un Champion</p>
+    </div>
         <select id="championSelect">
             <option value="">-- Selectionnez un Champion --</option>
         </select>
@@ -43,14 +60,9 @@
                     <img id="championImage" src="" alt="Champion Image">
                     <h2 id="championName"></h2>
                 </div>
-                <div id="championStats"></div>
-            </div>
-            <div id="botChamp">
-                <div id="championPassive"></div>
-                <div id="championAbilities"></div>
             </div>
         </div>
-        <div id="p">
+        <div class="p">
         <p>Runes et Objets</p>
     </div>
         <div id="runeItem">
