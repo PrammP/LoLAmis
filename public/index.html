@@ -7,22 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+
+        <div id="userActions">
+            <button id="login-btn"><svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></button>
+            <button id="register-btn"><svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Add_Plus"> <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></button>
+        </div>
+
+   
+    <nav id="navbar">
+        <ul>
+           
+            <li><a href="index.html">Création</a></li>
+            <li><a href="#communaute">Communauté</a></li>
+        </ul>
+    </nav>
+
     <div id="greeting" style="display: none;">
         <span id="welcomeMessage"></span>
         <button id="profile-btn" style="display: none;">Mon Profil</button>
     </div>
     
-    <div id="userActions">
-        <button id="login-btn"><svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></button>
-        <button id="register-btn"><svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Add_Plus"> <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></button>
-    </div>
+    
+    
     <div id="top">
         <h1>Selectionnez un Champion</h1>
         <select id="championSelect">
             <option value="">-- Selectionnez un Champion --</option>
         </select>
     </div>
+
     <div id="bot">
         <div id="champion">
             <div class="champion-display" id="championDisplay" style="display:none;">
@@ -42,16 +55,16 @@
                 <button data-type="Domination" class="runes">
                   <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png" alt="Domination" title="Domination" />
                 </button>
-                <button data-type="Precision"class="runes">
+                <button data-type="Precision" class="runes">
                   <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7201_Precision.png" alt="Précision" title="Précision" />
                 </button>
-                <button data-type="Sorcery"class="runes">
+                <button data-type="Sorcery" class="runes">
                   <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7202_Sorcery.png" alt="Sorcellerie" title="Sorcellerie" />
                 </button>
-                <button data-type="Resolve"class="runes">
+                <button data-type="Resolve" class="runes">
                   <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png" alt="Volonté" title="Volonté" />
                 </button>
-                <button data-type="Inspiration"class="runes">
+                <button data-type="Inspiration" class="runes">
                   <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7203_Whimsy.png" alt="Inspiration" title="Inspiration" />
                 </button>
               </div>
@@ -72,8 +85,8 @@
                     </div>
                 </div>
               </div>
-              
         </div>
+        
         <div id="itemSlot">
             <div class="inventory" id="inventory">
                 <div class="slot" data-index="0"></div>
@@ -86,6 +99,7 @@
             <div class="scroll-box" id="itemContainer"></div>
         </div>
     </div>
+
     <script type="module" src="js/stuff.js"></script>
     <script type="module" src="js/app.js"></script>
     <script type="module" src="js/champion.js"></script>

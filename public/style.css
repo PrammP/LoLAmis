@@ -68,8 +68,9 @@ body {
 }
 #runeTypeSelector button {
     background: none;
-    border-radius: 15%;
+    border-radius: 50%;
     border: 2px solid white;
+    margin: 5px;
 }
 #runeTypeSelector{
 display: flex;
@@ -81,6 +82,7 @@ justify-content: flex-start;
     width: 40%;
 }
 .runeContainer{
+    
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -94,8 +96,13 @@ justify-content: flex-start;
    justify-content: center;
    flex-direction: column;
 }
+#championDisplay{
+    display: flex;
+    flex-direction: row;
+    width: 45vw;
+}
 #runeContainer2{
-
+ 
    padding: 10px;
     display: flex;
     align-items: center;
@@ -114,21 +121,27 @@ justify-content: flex-start;
     height: 20vh;
     flex-wrap: wrap;
     color: white;
+    margin-left: 10vw;
 }
 #championStats p {
     width: 130px;
     color: white;
 }
 #champPres{
+border: 2px solid white;
+border-radius: 15%;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 height: 25vh;
-width: 15vw;
+width: 12vw;
+margin-right: 2vw;
 padding-top:25px ;
+margin-left: 2vw;
 }
 #abilitiesDisplay{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +151,6 @@ padding-top:25px ;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 50vw;
     flex-wrap: wrap;
     height: 36vh;
 
@@ -166,13 +178,15 @@ padding-top:25px ;
     display: none;
   }
 .scroll-box {
+    border: 2px solid white;
+    width: 55%;
     height: 95%; 
     overflow-y: scroll; 
-    border: none;
+    border-radius: 15px 15px 15px 15px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    
+    margin-bottom: 15px;
     gap: 10px; 
 }
 .scroll-box img {
@@ -258,7 +272,48 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin: 10px;
+   
     border: 2px solid white;
     border-radius:50% ;
   }
+
+ button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+ #userActions{
+    position: absolute;
+    top: 5px;
+ }
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-bottom: 2px solid white;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: 'League', sans-serif;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
