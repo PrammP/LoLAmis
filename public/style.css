@@ -1,44 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap');
-body{
-    width: 100%;
-	height: 100%;
-	background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
-	background-size: 180% 180%;
-	animation: gradient-animation 6s ease infinite;
-}
 
-@keyframes gradient-animation {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 body {
     font-family: "League";
     display: flex;
     flex-direction: column;
     margin: 0;
+    background-color: #ffffff;
 }
 
 .champion-display {
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
+   
+    -webkit-box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19); 
+box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19);
+    margin-left: 20px;
+    margin-bottom: 40px;
 }
 .champion-display img {
     width: 130px;
     height: auto;
-    border: 2px solid #ddd;
     border-radius: 10px;
-   
 }
 #top{
-    color:white;
+    color:black;
     height: 30vh;
     width: 100%;
     display: flex;
@@ -69,10 +54,11 @@ body {
 #runeTypeSelector button {
     background: none;
     border-radius: 50%;
-    border: 2px solid white;
     margin: 5px;
 }
 #runeTypeSelector{
+    -webkit-box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19); 
+    box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19);
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
@@ -83,9 +69,12 @@ justify-content: flex-start;
 }
 .runeContainer{
     
+   -webkit-box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19); 
+box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19);
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 50%;
+    margin-left: 20vw;
     height: 90%;
     justify-content: space-evenly;
 }
@@ -95,6 +84,7 @@ justify-content: flex-start;
    align-items: center;
    justify-content: center;
    flex-direction: column;
+   
 }
 #championDisplay{
     display: flex;
@@ -102,7 +92,7 @@ justify-content: flex-start;
     width: 45vw;
 }
 #runeContainer2{
- 
+   
    padding: 10px;
     display: flex;
     align-items: center;
@@ -120,15 +110,15 @@ justify-content: flex-start;
     width: 10vw;
     height: 20vh;
     flex-wrap: wrap;
-    color: white;
-    margin-left: 10vw;
+    color: black;
+    margin-left: 3vw;
 }
 #championStats p {
     width: 130px;
-    color: white;
+    color: black;
 }
 #champPres{
-border: 2px solid white;
+
 border-radius: 15%;
 display: flex;
 justify-content: center;
@@ -158,10 +148,10 @@ margin-left: 2vw;
 }
 #championAbilities p {
     font-size: 12px;
-   color: white;
+   color: black;
 }
 .runes{
-    background-color: white;
+    background-color: black;
     border: none;
 }
 .runes img {
@@ -177,12 +167,16 @@ margin-left: 2vw;
 .scroll-box::-webkit-scrollbar {
     display: none;
   }
+  body::-webkit-scollbar{
+    display: none;
+  }
 .scroll-box {
-    border: 2px solid white;
     width: 55%;
     height: 95%; 
     overflow-y: scroll; 
     border-radius: 15px 15px 15px 15px;
+    -webkit-box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19); 
+ box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19);
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -203,19 +197,22 @@ margin-left: 2vw;
     margin-bottom: 20px;
 }
 .slot {
+    margin-top: 5vh;
     width: 50px;
     height: 50px;
-    border: 2px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border-radius: 15px 15px 15px 15px;
+    -webkit-box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19); 
+    box-shadow: inset 5px 5px 16px 5px rgba(0,0,0,0.19);
 }
 .slot img {
     width: 100%;
     height: 100%;
     border-radius: 15px 15px 15px 15px;
+    
 }
 .slot img:hover {
     cursor: pointer;
@@ -243,8 +240,7 @@ margin-left: 2vw;
     flex-direction: column;
     width: 20vw;
     font-size: 12px;
-    color: white;
-    padding-left: 20px;
+    color: black;
 }
 
 
@@ -266,31 +262,33 @@ button {
     height: 72px;
     width: 72px;
    background: none;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-   
-    border: 2px solid white;
     border-radius:50% ;
+    transition: background-color 0.3s ease;
   }
 
  button:hover{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
 }
+
  #userActions{
     position: absolute;
     top: 5px;
+    left: 20px;
  }
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 15px;
-    border-bottom: 2px solid white;
+    background-color: #ddd;
+    -webkit-box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19); 
+ box-shadow: 5px 5px 16px 5px rgba(0,0,0,0.19);
     
 }
 
@@ -306,7 +304,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-family: 'League', sans-serif;
     font-size: 24px;
     padding: 10px 20px;
@@ -315,5 +313,5 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
 }
