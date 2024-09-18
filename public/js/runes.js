@@ -18,8 +18,17 @@ runeContainer1.style.display = "none";
 runeContainer2.style.display = "none";
 
 let selectedTypes = { container1: null, container2: null };
+let selectedRunes = { container1: [], container2: [] };
 
-function appendRuneImage(rune, container) {
+function createRuneRow() {
+  const row = document.createElement("div");
+  row.className = "rune-row";
+  row.style.display = "flex";
+  row.style.justifyContent = "center";
+  return row;
+}
+
+function appendRuneImage(rune, container, isPrimary, rowIndex) {
   const imgUrl = `${imgBaseUrl}${rune.icon}`;
   const img = document.createElement("img");
   img.src = imgUrl;
@@ -27,11 +36,82 @@ function appendRuneImage(rune, container) {
   img.style.margin = "10px";
   img.style.height = "48px";
   img.style.width = "48px";
+  img.dataset.runeId = rune.id;
+  img.dataset.rowIndex = rowIndex;
   img.onerror = () => {
     console.error(`Error loading image for rune: ${rune.name}`);
   };
 
+  img.addEventListener("click", () =>
+    toggleRuneSelection(img, container, isPrimary)
+  );
+  img.setAttribute("tabindex", "0");
+  img.setAttribute("role", "button");
+  img.setAttribute("aria-label", `Sélectionner la rune ${rune.name}`);
+  img.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleRuneSelection(img, container, isPrimary);
+    }
+  });
+
   container.appendChild(img);
+}
+
+function toggleRuneSelection(img, container, isPrimary) {
+  const runeId = img.dataset.runeId;
+  const containerType = isPrimary ? "container1" : "container2";
+  const maxSelections = isPrimary ? 4 : 2;
+  const rowIndex = parseInt(img.dataset.rowIndex);
+
+  if (img.classList.contains("selected")) {
+    img.classList.remove("selected");
+    selectedRunes[containerType] = selectedRunes[containerType].filter(
+      (rune) => rune.id !== runeId
+    );
+  } else {
+    if (selectedRunes[containerType].length < maxSelections) {
+      // Désélectionner la rune précédemment sélectionnée dans cette ligne
+      const previouslySelected = Array.from(
+        container.querySelectorAll(".selected")
+      ).find((selected) => parseInt(selected.dataset.rowIndex) === rowIndex);
+      if (previouslySelected) {
+        previouslySelected.classList.remove("selected");
+        selectedRunes[containerType] = selectedRunes[containerType].filter(
+          (rune) => rune.id !== previouslySelected.dataset.runeId
+        );
+      }
+
+      img.classList.add("selected");
+      selectedRunes[containerType].push({ id: runeId, row: rowIndex });
+    } else {
+      alert(
+        `Vous ne pouvez sélectionner que ${maxSelections} runes au maximum dans ce conteneur.`
+      );
+      return;
+    }
+  }
+
+  updateRuneStates(containerType);
+}
+
+function updateRuneStates(containerType) {
+  const container =
+    containerType === "container1" ? runeContainer1 : runeContainer2;
+  const allRunes = container.querySelectorAll("img");
+  const selectedCount = selectedRunes[containerType].length;
+  const maxSelections = containerType === "container1" ? 4 : 2;
+
+  allRunes.forEach((img) => {
+    const isSelected = img.classList.contains("selected");
+    const canSelect = selectedCount < maxSelections || isSelected;
+
+    img.classList.toggle("disabled", !canSelect);
+    img.style.opacity = canSelect ? "1" : "0.5";
+    img.style.cursor = canSelect ? "pointer" : "not-allowed";
+    img.setAttribute("aria-disabled", !canSelect);
+    img.setAttribute("aria-selected", isSelected);
+  });
 }
 
 function clearContainer(container) {
@@ -43,31 +123,28 @@ function fetchAndDisplayRunes(selectedType, container, isPrimary) {
     .then((response) => response.json())
     .then((runes) => {
       if (isPrimary) {
-        runeTop1.innerHTML = "";
-        runeMid1.innerHTML = "";
-        runeBot1.innerHTML = "";
-        runeSuperBot1.innerHTML = "";
+        clearContainer(runeTop1);
+        clearContainer(runeMid1);
+        clearContainer(runeBot1);
+        clearContainer(runeSuperBot1);
         runeContainer1.style.display = "flex";
+        runeContainer1.style.flexDirection = "column";
 
         runes.forEach((runeTree) => {
           if (runeTree.key === selectedType) {
-            const primaryRunes = runeTree.slots.flatMap((slot) => slot.runes);
-
-            primaryRunes
-              .slice(0, 3)
-              .forEach((rune) => appendRuneImage(rune, runeTop1));
-
-            primaryRunes
-              .slice(3, 6)
-              .forEach((rune) => appendRuneImage(rune, runeMid1));
-
-            primaryRunes
-              .slice(6, 9)
-              .forEach((rune) => appendRuneImage(rune, runeBot1));
-
-            primaryRunes
-              .slice(9, 12)
-              .forEach((rune) => appendRuneImage(rune, runeSuperBot1));
+            runeTree.slots.forEach((slot, slotIndex) => {
+              const targetContainer = [
+                runeTop1,
+                runeMid1,
+                runeBot1,
+                runeSuperBot1,
+              ][slotIndex];
+              const row = createRuneRow();
+              targetContainer.appendChild(row);
+              slot.runes.forEach((rune) =>
+                appendRuneImage(rune, row, true, slotIndex)
+              );
+            });
           }
         });
       } else {
@@ -75,26 +152,24 @@ function fetchAndDisplayRunes(selectedType, container, isPrimary) {
         clearContainer(runeMid2);
         clearContainer(runeBot2);
         runeContainer2.style.display = "flex";
+        runeContainer2.style.flexDirection = "column";
 
         runes.forEach((runeTree) => {
           if (runeTree.key === selectedType) {
-            const primaryRunes = runeTree.slots.flatMap((slot) => slot.runes);
-            const remainingRunes = primaryRunes.slice(3);
-
-            remainingRunes
-              .slice(0, 3)
-              .forEach((rune) => appendRuneImage(rune, runeTop2));
-
-            remainingRunes
-              .slice(3, 6)
-              .forEach((rune) => appendRuneImage(rune, runeMid2));
-
-            remainingRunes
-              .slice(6, 9)
-              .forEach((rune) => appendRuneImage(rune, runeBot2));
+            const secondaryRunes = runeTree.slots
+              .slice(1)
+              .flatMap((slot) => slot.runes);
+            [runeTop2, runeMid2, runeBot2].forEach((container, index) => {
+              const row = createRuneRow();
+              container.appendChild(row);
+              secondaryRunes
+                .slice(index * 3, (index + 1) * 3)
+                .forEach((rune) => appendRuneImage(rune, row, false, index));
+            });
           }
         });
       }
+      updateRuneStates(isPrimary ? "container1" : "container2");
     })
     .catch((error) => {
       console.error("Error loading runes:", error);
@@ -119,6 +194,7 @@ function handleRuneSelection(selectedType) {
   } else {
     alert("Les deux conteneurs sont déjà remplis. Réinitialisation.");
     selectedTypes = { container1: null, container2: null };
+    selectedRunes = { container1: [], container2: [] };
     runeContainer1.style.display = "none";
     runeContainer2.style.display = "none";
     clearContainer(runeTop1);
@@ -131,6 +207,7 @@ function handleRuneSelection(selectedType) {
   }
 }
 
+const runeTypeSelector = document.getElementById("runeTypeSelector");
 runeTypeSelector.addEventListener("click", (event) => {
   const button = event.target.closest("button");
 

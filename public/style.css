@@ -319,6 +319,19 @@ nav ul {
 nav ul li {
     display: inline;
 }
+.selected {
+    border: 2px solid gold;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    border-radius: 50%;
+  }
+  .disabled {
+    pointer-events: none;
+  }
+  .rune-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
 
 nav ul li a {
     text-decoration: none;
