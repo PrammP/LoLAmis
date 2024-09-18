@@ -1,11 +1,12 @@
 @font-face{
-    font-family: "League";
-    src:'/fonts/League.otf' format("opentype");
+    font-family: "LeagueRegular";
+    src: url('fonts/LeagueRegular.woff2') format('woff2'),
+         url('fonts/LeagueRegular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 body {
-    font-family: "League";
+    font-family: "LeagueRegular", sans-serif;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -285,9 +286,19 @@ button {
 
 
  #userActions{
-    position: absolute;
-    top: 0;
-    left: 20px;
+    display: flex;
+    justify-content: space-between;
+align-items: center;
+   width: 20%;
+  
+ }
+ #userActions button p {
+    font-family:'League';
+ }
+ nav ul {
+    width: 80%;
+    display: flex;
+    margin-left: 20%;
  }
 nav {
     display: flex;
