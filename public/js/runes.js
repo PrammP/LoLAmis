@@ -71,7 +71,6 @@ function toggleRuneSelection(img, container, isPrimary) {
     );
   } else {
     if (selectedRunes[containerType].length < maxSelections) {
-      // Désélectionner la rune précédemment sélectionnée dans cette ligne
       const previouslySelected = Array.from(
         container.querySelectorAll(".selected")
       ).find((selected) => parseInt(selected.dataset.rowIndex) === rowIndex);
