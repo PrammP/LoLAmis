@@ -19,7 +19,7 @@
         <ul>
            
             <li><a href="index.html">Création</a></li>
-            <li><a href="#communaute">Communauté</a></li>
+            <li><a href="communaute.html">Communauté</a></li>
         </ul>
     </nav>
 
@@ -34,7 +34,7 @@
         <div class="p">
             <p>Entrez le nom de votre Build</p>
         </div>
-        <input type="text" placeholder="Entrez le nom de votre Build"/>
+        <input type="text" id="buildName"placeholder="Entrez le nom de votre Build"/>
         <div class="p">
             <p>Choisissez le rôle de votre champion</p>
         </div>
@@ -46,7 +46,7 @@
                 <img src="lane/white-support.webp" alt="Support"height="96px" width="96px">
             
         </div>
-<div class="p">
+    <div class="p">
         <p>Selectionnez un Champion</p>
     </div>
         <select id="championSelect">
@@ -117,7 +117,10 @@
             <div class="scroll-box" id="itemContainer"></div>
         </div>
     </div>
+    <button id="saveBuild">Sauvegarder le Build</button>
     </div>
+   
+    <script type="module" src="js/build-manager.js"></script>
     <script type="module" src="js/stuff.js"></script>
     <script type="module" src="js/app.js"></script>
     <script type="module" src="js/champion.js"></script>

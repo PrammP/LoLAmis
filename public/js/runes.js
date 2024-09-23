@@ -17,8 +17,8 @@ const runeBot2 = document.getElementById("runeBot2");
 runeContainer1.style.display = "none";
 runeContainer2.style.display = "none";
 
-let selectedTypes = { container1: null, container2: null };
-let selectedRunes = { container1: [], container2: [] };
+window.selectedTypes = { container1: null, container2: null };
+window.selectedRunes = { container1: [], container2: [] };
 
 function createRuneRow() {
   const row = document.createElement("div");
@@ -66,23 +66,23 @@ function toggleRuneSelection(img, container, isPrimary) {
 
   if (img.classList.contains("selected")) {
     img.classList.remove("selected");
-    selectedRunes[containerType] = selectedRunes[containerType].filter(
-      (rune) => rune.id !== runeId
-    );
+    window.selectedRunes[containerType] = window.selectedRunes[
+      containerType
+    ].filter((rune) => rune.id !== runeId);
   } else {
-    if (selectedRunes[containerType].length < maxSelections) {
+    if (window.selectedRunes[containerType].length < maxSelections) {
       const previouslySelected = Array.from(
         container.querySelectorAll(".selected")
       ).find((selected) => parseInt(selected.dataset.rowIndex) === rowIndex);
       if (previouslySelected) {
         previouslySelected.classList.remove("selected");
-        selectedRunes[containerType] = selectedRunes[containerType].filter(
-          (rune) => rune.id !== previouslySelected.dataset.runeId
-        );
+        window.selectedRunes[containerType] = window.selectedRunes[
+          containerType
+        ].filter((rune) => rune.id !== previouslySelected.dataset.runeId);
       }
 
       img.classList.add("selected");
-      selectedRunes[containerType].push({ id: runeId, row: rowIndex });
+      window.selectedRunes[containerType].push({ id: runeId, row: rowIndex });
     } else {
       alert(
         `Vous ne pouvez sélectionner que ${maxSelections} runes au maximum dans ce conteneur.`
@@ -176,24 +176,24 @@ function fetchAndDisplayRunes(selectedType, container, isPrimary) {
 }
 
 function handleRuneSelection(selectedType) {
-  if (!selectedTypes.container1) {
-    if (selectedTypes.container2 !== selectedType) {
-      selectedTypes.container1 = selectedType;
+  if (!window.selectedTypes.container1) {
+    if (window.selectedTypes.container2 !== selectedType) {
+      window.selectedTypes.container1 = selectedType;
       fetchAndDisplayRunes(selectedType, runeContainer1, true);
     } else {
       alert("Ce type de rune est déjà sélectionné dans le second conteneur.");
     }
-  } else if (!selectedTypes.container2) {
-    if (selectedTypes.container1 !== selectedType) {
-      selectedTypes.container2 = selectedType;
+  } else if (!window.selectedTypes.container2) {
+    if (window.selectedTypes.container1 !== selectedType) {
+      window.selectedTypes.container2 = selectedType;
       fetchAndDisplayRunes(selectedType, runeContainer2, false);
     } else {
       alert("Ce type de rune est déjà sélectionné dans le premier conteneur.");
     }
   } else {
     alert("Les deux conteneurs sont déjà remplis. Réinitialisation.");
-    selectedTypes = { container1: null, container2: null };
-    selectedRunes = { container1: [], container2: [] };
+    window.selectedTypes = { container1: null, container2: null };
+    window.selectedRunes = { container1: [], container2: [] };
     runeContainer1.style.display = "none";
     runeContainer2.style.display = "none";
     clearContainer(runeTop1);
