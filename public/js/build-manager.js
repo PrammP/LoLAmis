@@ -69,11 +69,29 @@ async function displayBuilds() {
                 "Runes secondaires"
               )}
             </div>
+            <div class="items">
+              <h4>Objets:</h4>
+              ${displayItems(build.items)}
+            </div>
           </div>
         `
       )
       .join("");
   }
+}
+
+function displayItems(items) {
+  if (!items || items.length === 0) {
+    return "Aucun objet sélectionné";
+  }
+
+  return items
+    .map(
+      (itemSrc) => `
+    <img src="${itemSrc}" alt="Objet" width="32" height="32">
+  `
+    )
+    .join("");
 }
 
 function deleteBuild(index) {
@@ -167,6 +185,14 @@ function saveBuild() {
     return;
   }
 
+  const selectedItems = [];
+  document.querySelectorAll(".slot").forEach((slot) => {
+    const img = slot.querySelector("img");
+    if (img) {
+      selectedItems.push(img.src);
+    }
+  });
+
   const build = {
     name: buildName,
     lane: selectedLane.alt,
@@ -174,6 +200,7 @@ function saveBuild() {
     championName: selectedChampion.options[selectedChampion.selectedIndex].text,
     runes: selectedRunes,
     runeTypes: selectedTypes,
+    items: selectedItems,
   };
 
   let builds = JSON.parse(localStorage.getItem("builds")) || [];
